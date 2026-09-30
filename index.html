@@ -1,0 +1,418 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#13233A">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="מחירי טיסות">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<link rel="icon" href="icons/icon-192.png">
+<title>מעקב מחירי טיסות</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Karantina:wght@400;700&family=Assistant:wght@400;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#13233A; --ink2:#3A4B63; --sky:#EAF0F4; --card:#FFFFFF; --line:#D5DEE6;
+  --amber:#F2A900; --amber-soft:#FFF3D1; --good:#16895E; --good-soft:#DDF3EA; --bad:#B8412F;
+  --bar:#C3CFDA; --r:18px;
+  --display:"Karantina",system-ui,sans-serif; --body:"Assistant",system-ui,sans-serif; --mono:"IBM Plex Mono",ui-monospace,monospace;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--sky);color:var(--ink);font-family:var(--body);font-size:16px;-webkit-tap-highlight-color:transparent}
+button,input,select{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--amber);outline-offset:2px;border-radius:8px}
+.wrap{max-width:560px;margin:0 auto;padding:0 16px calc(96px + env(safe-area-inset-bottom))}
+
+/* header — the departure board */
+header{background:var(--ink);color:#fff;padding:calc(18px + env(safe-area-inset-top)) 16px 20px;border-radius:0 0 26px 26px}
+header .in{max-width:560px;margin:0 auto}
+.brand{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.brand h1{font-family:var(--display);font-weight:700;font-size:44px;line-height:.9;margin:0;letter-spacing:.5px}
+.brand h1 span{color:var(--amber)}
+.iconbtn{background:rgba(255,255,255,.1);border:0;color:#fff;width:44px;height:44px;border-radius:14px;display:grid;place-items:center;cursor:pointer}
+.iconbtn svg{width:22px;height:22px}
+.status{margin-top:10px;font-size:14px;color:#B7C4D3;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--good)}
+.dot.warn{background:var(--amber)}
+.board{margin-top:16px;display:grid;gap:6px}
+.row{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:10px;background:#0D1A2C;border-radius:10px;padding:8px 10px;cursor:pointer;border:0;text-align:right;color:#fff;width:100%}
+.flap{font-family:var(--mono);font-weight:600;font-size:15px;letter-spacing:1px;display:flex;gap:2px;direction:ltr}
+.flap b{background:#1E2F47;border-radius:3px;padding:2px 3px;min-width:15px;text-align:center;position:relative}
+.flap b::after{content:"";position:absolute;left:0;right:0;top:50%;height:1px;background:#0D1A2C}
+.row .nm{font-size:14px;color:#B7C4D3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.row .pr{font-family:var(--mono);font-weight:600;color:var(--amber);font-size:16px;direction:ltr}
+.row .pr.hit{color:#5BE0A5}
+
+/* cards */
+h2.sec{font-family:var(--display);font-size:30px;margin:26px 2px 10px;font-weight:700}
+.card{background:var(--card);border-radius:var(--r);padding:16px;margin-bottom:14px;box-shadow:0 1px 0 var(--line)}
+.top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+.route{font-family:var(--display);font-weight:700;font-size:40px;line-height:.9;direction:ltr;letter-spacing:1px}
+.route i{font-style:normal;color:var(--amber);padding:0 4px}
+.title{font-weight:700;font-size:17px;margin-top:4px}
+.meta{color:var(--ink2);font-size:14px;margin-top:2px}
+.price{text-align:left}
+.price .v{font-family:var(--mono);font-weight:600;font-size:28px;direction:ltr;display:block}
+.price .t{font-size:13px;color:var(--ink2)}
+.chip{display:inline-block;font-size:13px;font-weight:700;border-radius:999px;padding:3px 10px;margin-top:4px}
+.chip.hit{background:var(--good-soft);color:var(--good)}
+.chip.miss{background:var(--amber-soft);color:#8A5A00}
+.chip.err{background:#FBE3DE;color:var(--bad)}
+
+/* the fare strip: one bar per departure date */
+.strip{margin-top:14px;position:relative}
+.bars{display:flex;align-items:flex-end;gap:2px;height:74px;direction:ltr;padding-top:6px}
+.bars button{flex:1 1 0;min-width:3px;border:0;padding:0;background:var(--bar);border-radius:3px 3px 1px 1px;cursor:pointer;position:relative}
+.bars button.under{background:#7FC7A6}
+.bars button.best{background:var(--good)}
+.bars button.sel{outline:2px solid var(--ink);outline-offset:1px}
+.target{position:absolute;left:0;right:0;border-top:2px dashed var(--amber);pointer-events:none}
+.target span{position:absolute;left:0;top:-20px;font-size:11px;font-weight:700;color:#8A5A00;background:var(--card);padding:0 4px;font-family:var(--mono)}
+.axis{display:flex;justify-content:space-between;font-size:12px;color:var(--ink2);margin-top:4px;direction:ltr;font-family:var(--mono)}
+.pick{margin-top:12px;background:var(--sky);border-radius:12px;padding:10px 12px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.pick .d{font-weight:700}
+.pick .s{font-size:13px;color:var(--ink2)}
+.go{background:var(--ink);color:#fff;border:0;border-radius:12px;padding:10px 14px;font-weight:700;text-decoration:none;white-space:nowrap;font-size:15px}
+.go.alt{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+.trend{display:flex;align-items:center;gap:10px;margin-top:12px;font-size:13px;color:var(--ink2)}
+.trend svg{flex:1;height:34px}
+.actions{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+.small{background:transparent;border:1.5px solid var(--line);border-radius:10px;padding:6px 12px;font-size:14px;font-weight:600;cursor:pointer}
+.off{opacity:.55}
+
+/* empty / notices */
+.note{background:var(--amber-soft);border-radius:14px;padding:12px 14px;font-size:14px;line-height:1.5;margin-top:14px}
+.note b{display:block;margin-bottom:2px}
+
+
+/* explore */
+.ex{background:var(--ink);color:#fff;border-radius:var(--r);padding:16px;margin-top:18px}
+.ex .hd{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+.ex .q{font-family:var(--display);font-size:34px;line-height:.95;font-weight:700}
+.ex .q em{font-style:normal;color:var(--amber);font-family:var(--mono);font-size:26px;font-weight:600}
+.ex .sub{color:#B7C4D3;font-size:14px;margin-top:6px}
+.ex .small{color:#fff;border-color:#34475F}
+.deals{margin-top:12px;display:grid;gap:6px}
+.deal{display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:center;background:#0D1A2C;border-radius:10px;padding:9px 10px;color:#fff;text-decoration:none}
+.deal .pr{font-family:var(--mono);font-weight:600;color:#5BE0A5;direction:ltr}
+.deal .nm{font-size:14px;color:#D6DFE8}
+.deal .nm small{display:block;color:#8FA1B5;font-size:12px}
+.near{margin-top:10px;font-size:13px;color:#B7C4D3;line-height:1.7}
+.near b{font-family:var(--mono);color:#fff;font-weight:600}
+
+/* sheet */
+.fab{position:fixed;bottom:calc(20px + env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);background:var(--amber);color:var(--ink);border:0;border-radius:999px;padding:14px 24px;font-weight:700;font-size:17px;box-shadow:0 8px 24px rgba(19,35,58,.25);cursor:pointer;display:flex;gap:8px;align-items:center}
+dialog{border:0;border-radius:22px 22px 0 0;padding:0;width:100%;max-width:560px;margin:auto auto 0;max-height:92vh;color:var(--ink)}
+dialog::backdrop{background:rgba(13,26,44,.55)}
+.sheet{padding:20px 18px calc(22px + env(safe-area-inset-bottom))}
+.sheet h3{font-family:var(--display);font-size:34px;margin:0 0 12px}
+.f{display:grid;gap:4px;margin-bottom:12px}
+.f label{font-size:14px;font-weight:700}
+.f small{color:var(--ink2);font-size:13px}
+.f input,.f select{border:1.5px solid var(--line);border-radius:12px;padding:11px 12px;background:#fff;width:100%}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.days{display:flex;gap:6px;flex-wrap:wrap}
+.days label{font-weight:600}
+.days input{display:none}
+.days span{display:inline-block;border:1.5px solid var(--line);border-radius:10px;padding:6px 10px;cursor:pointer;font-size:14px}
+.days input:checked+span{background:var(--ink);color:#fff;border-color:var(--ink)}
+.sheet .btns{display:flex;gap:10px;margin-top:6px}
+.sheet .btns button{flex:1;border:0;border-radius:14px;padding:13px;font-weight:700;cursor:pointer;font-size:16px}
+.primary{background:var(--ink);color:#fff}
+.ghost{background:var(--sky)}
+.danger{background:#FBE3DE;color:var(--bad)}
+.toast{position:fixed;top:calc(16px + env(safe-area-inset-top));left:50%;transform:translateX(-50%) translateY(-120%);background:var(--ink);color:#fff;padding:12px 18px;border-radius:14px;font-weight:600;transition:transform .3s;z-index:9;max-width:90vw;text-align:center}
+.toast.show{transform:translateX(-50%) translateY(0)}
+@media (prefers-reduced-motion:reduce){.toast{transition:none}}
+</style>
+</head>
+<body>
+<header><div class="in">
+  <div class="brand">
+    <h1>מחירי <span>טיסות</span></h1>
+    <div style="display:flex;gap:8px">
+      <button class="iconbtn" id="runBtn" aria-label="בדוק מחירים עכשיו" title="בדוק מחירים עכשיו"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12a9 9 0 1 1-3-6.7L21 8"/><path d="M21 3v5h-5"/></svg></button>
+      <button class="iconbtn" id="setBtn" aria-label="הגדרות" title="הגדרות"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg></button>
+    </div>
+  </div>
+  <div class="status" id="status"><span class="dot"></span><span>טוען…</span></div>
+  <div class="board" id="board"></div>
+</div></header>
+
+<main class="wrap">
+  <section id="explore"></section>
+  <h2 class="sec">המעקבים שלי</h2>
+  <div id="cards"></div>
+  <div id="notice"></div>
+</main>
+
+<button class="fab" id="addBtn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>מעקב חדש</button>
+
+<dialog id="editDlg"><form class="sheet" id="editForm" method="dialog">
+  <h3 id="editTitle">מעקב חדש</h3>
+  <div class="f"><label for="fName">שם</label><input id="fName" required placeholder="למשל: סופ״ש בפראג"></div>
+  <div class="two">
+    <div class="f"><label for="fOrigin">מ־</label><input id="fOrigin" required maxlength="3" value="TLV" style="text-transform:uppercase;direction:ltr"></div>
+    <div class="f"><label for="fDest">אל (קוד שדה)</label><input id="fDest" required maxlength="3" placeholder="PRG" style="text-transform:uppercase;direction:ltr"></div>
+  </div>
+  <div class="two">
+    <div class="f"><label for="fFrom">יציאה החל מ־</label><input id="fFrom" type="date" required></div>
+    <div class="f"><label for="fTo">עד</label><input id="fTo" type="date" required></div>
+  </div>
+  <div class="two">
+    <div class="f"><label for="fDays">אורך הטיול</label><select id="fDays"><option value="0">כיוון אחד</option></select></div>
+    <div class="f"><label for="fStops">עצירות</label><select id="fStops"><option value="0">ישירה בלבד</option><option value="1">עד עצירה אחת</option><option value="ANY">לא משנה</option></select></div>
+  </div>
+  <div class="f"><label>יום יציאה <small>(בלי סימון = כל יום)</small></label>
+    <div class="days" id="fWeek"></div></div>
+  <div class="f"><label for="fTarget">התרע לי מתחת ל־ (₪, הלוך ושוב)</label><input id="fTarget" type="number" inputmode="numeric" min="1" required placeholder="800"></div>
+  <div class="btns"><button type="button" class="ghost" id="cancelEdit">ביטול</button><button type="submit" class="primary">שמירה</button></div>
+  <div class="btns" id="delRow" hidden><button type="button" class="danger" id="delBtn">מחיקת המעקב</button></div>
+</form></dialog>
+
+<dialog id="setDlg"><form class="sheet" id="setForm" method="dialog">
+  <h3>חיבור ל־GitHub</h3>
+  <p style="margin:0 0 14px;font-size:15px;line-height:1.5;color:var(--ink2)">כדי לשמור מעקבים ולהריץ בדיקה מהטלפון צריך מפתח גישה אישי (Fine-grained token) עם הרשאות <b>Contents</b> ו־<b>Actions</b>: קריאה וכתיבה, רק לריפו הזה. המפתח נשמר רק במכשיר הזה.</p>
+  <div class="two">
+    <div class="f"><label for="sOwner">שם משתמש</label><input id="sOwner" style="direction:ltr"></div>
+    <div class="f"><label for="sRepo">ריפו</label><input id="sRepo" style="direction:ltr"></div>
+  </div>
+  <div class="f"><label for="sToken">מפתח גישה</label><input id="sToken" type="password" style="direction:ltr" placeholder="github_pat_…" autocomplete="off"></div>
+  <div class="btns"><button type="button" class="ghost" id="cancelSet">סגירה</button><button type="submit" class="primary">שמירה</button></div>
+</form></dialog>
+
+<dialog id="exDlg"><form class="sheet" id="exForm" method="dialog">
+  <h3>לכל מקום</h3>
+  <p style="margin:0 0 14px;font-size:15px;line-height:1.5;color:var(--ink2)">בכל בדיקה נסרקים כ־100 יעדים מתל אביב, ותקבל התראה על כל יעד שיש אליו טיסה מתחת לסף.</p>
+  <div class="two">
+    <div class="f"><label for="xPrice">מחיר מקסימלי</label><input id="xPrice" type="number" min="1" required inputmode="numeric"></div>
+    <div class="f"><label for="xCur">מטבע</label><select id="xCur"><option value="USD">דולר $</option><option value="ILS">שקל ₪</option><option value="EUR">יורו €</option></select></div>
+  </div>
+  <div class="two">
+    <div class="f"><label for="xDays">אורך הטיול</label><select id="xDays"></select></div>
+    <div class="f"><label for="xWin">חיפוש בתוך</label><select id="xWin"><option value="30">חודש קדימה</option><option value="60">חודשיים</option><option value="90">3 חודשים</option><option value="150">5 חודשים</option></select></div>
+  </div>
+  <div class="f"><label for="xStops">עצירות</label><select id="xStops"><option value="ANY">לא משנה</option><option value="1">עד עצירה אחת</option><option value="0">ישירה בלבד</option></select></div>
+  <div class="f"><label>יום יציאה <small>(בלי סימון = כל יום)</small></label><div class="days" id="xWeek"></div></div>
+  <div class="f"><label for="xExcl">יעדים להחרגה <small>(קודי שדה, מופרדים בפסיק)</small></label><input id="xExcl" style="direction:ltr" placeholder="IST, SAW"></div>
+  <div class="f"><label><input type="checkbox" id="xOn"> הסריקה פעילה</label></div>
+  <div class="btns"><button type="button" class="ghost" id="cancelEx">ביטול</button><button type="submit" class="primary">שמירה</button></div>
+</form></dialog>
+
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+const $=s=>document.querySelector(s);
+const WD=["sunday","monday","tuesday","wednesday","thursday","friday","saturday"];
+const WD_HE=["א׳","ב׳","ג׳","ד׳","ה׳","ו׳","ש׳"];
+const CITY={ATH:"אתונה",FCO:"רומא",ROM:"רומא",BCN:"ברצלונה",PRG:"פראג",LON:"לונדון",LHR:"לונדון",LTN:"לונדון",STN:"לונדון",CDG:"פריז",PAR:"פריז",BER:"ברלין",VIE:"וינה",BUD:"בודפשט",LCA:"לרנקה",PFO:"פאפוס",AMS:"אמסטרדם",MXP:"מילאנו",MIL:"מילאנו",MAD:"מדריד",LIS:"ליסבון",JFK:"ניו יורק",NYC:"ניו יורק",BKK:"בנגקוק",DXB:"דובאי",TBS:"טביליסי",BUS:"באטומי",RHO:"רודוס",HER:"כרתים",SKG:"סלוניקי",SOF:"סופיה",OTP:"בוקרשט",WAW:"ורשה",KRK:"קרקוב",NAP:"נאפולי",VCE:"ונציה",IST:"איסטנבול",TLV:"תל אביב",PMO:"פלרמו",CTA:"קטניה",VAR:"ורנה",BGY:"ברגמו",BLQ:"בולוניה",BRI:"בארי",PSA:"פיזה",FLR:"פירנצה",TRN:"טורינו",PMI:"מיורקה",AGP:"מלגה",VLC:"ולנסיה",OPO:"פורטו",ORY:"פריז",NCE:"ניס",MRS:"מרסיי",LYS:"ליון",BRU:"בריסל",MAN:"מנצ׳סטר",DUB:"דבלין",MUC:"מינכן",FRA:"פרנקפורט",HAM:"המבורג",DUS:"דיסלדורף",CGN:"קלן",NUE:"נירנברג",ZRH:"ציריך",GVA:"ז׳נבה",BSL:"באזל",GDN:"גדנסק",WRO:"ורוצלב",CLJ:"קלוז׳",BOJ:"בורגס",BEG:"בלגרד",TGD:"פודגוריצה",TIV:"טיבט",SPU:"ספליט",DBV:"דוברובניק",ZAG:"זאגרב",LJU:"לובליאנה",SKP:"סקופיה",TIA:"טירנה",VNO:"וילנה",RIX:"ריגה",TLL:"טאלין",RMO:"קישינב",CPH:"קופנהגן",ARN:"שטוקהולם",OSL:"אוסלו",HEL:"הלסינקי",KUT:"קוטאיסי",EVN:"ירוואן",GYD:"באקו",SAW:"איסטנבול",AYT:"אנטליה",AUH:"אבו דאבי",AMM:"עמאן",CAI:"קהיר",SSH:"שארם",HRG:"הורגדה",RAK:"מרקש",ADD:"אדיס אבבה",NBO:"ניירובי",HKT:"פוקט",DEL:"דלהי",BOM:"מומבאי",GOI:"גואה",MLE:"מלדיביים",EWR:"ניו יורק",MIA:"מיאמי",LAX:"לוס אנג׳לס",YYZ:"טורונטו",CHQ:"כאניה",CFU:"קורפו",JTR:"סנטוריני",JMK:"מיקונוס"};
+let cfg=null, latest=null, history={}, sel={}, editing=null, sha=null;
+
+const gh={
+  get owner(){return localStorage.ft_owner||guess().owner}, get repo(){return localStorage.ft_repo||guess().repo}, get token(){return localStorage.ft_token||""},
+};
+function guess(){const m=location.hostname.match(/^([^.]+)\.github\.io$/);return {owner:m?m[1]:"",repo:m?(location.pathname.split("/")[1]||""):""}}
+const nis=n=>n==null?"—":"₪"+Math.round(n).toLocaleString("he-IL");
+const dd=s=>{const d=new Date(s+"T12:00:00");return `${d.getDate()}.${d.getMonth()+1}`};
+const ddw=s=>{const d=new Date(s+"T12:00:00");return `${WD_HE[d.getDay()]} ${d.getDate()}.${d.getMonth()+1}`};
+function ago(iso){if(!iso)return"";const m=Math.round((Date.now()-new Date(iso))/6e4);if(m<60)return`לפני ${m} דק׳`;const h=Math.round(m/60);if(h<48)return`לפני ${h} שעות`;return`לפני ${Math.round(h/24)} ימים`}
+function toast(t){const e=$("#toast");e.textContent=t;e.classList.add("show");clearTimeout(e._t);e._t=setTimeout(()=>e.classList.remove("show"),3200)}
+function gLink(w,dep,ret){let q=`Flights to ${w.destination} from ${w.origin} on ${dep}`;if(ret)q+=` through ${ret}`;q+=" one adult economy";if(w.max_stops===0)q+=" nonstop";return "https://www.google.com/travel/flights?hl=he&curr=ILS&q="+encodeURIComponent(q)}
+function skyLink(w,dep,ret){const f=s=>s.slice(2).replaceAll("-","");return `https://www.skyscanner.co.il/transport/flights/${w.origin.toLowerCase()}/${w.destination.toLowerCase()}/${f(dep)}/${ret?f(ret)+"/":""}?adultsv2=1&cabinclass=economy`}
+function kayakLink(w,dep,ret){return `https://www.kayak.com/flights/${w.origin}-${w.destination}/${dep}${ret?"/"+ret:""}?sort=price_a`}
+
+async function fetchJSON(path){
+  const bust="?t="+Date.now();
+  if(gh.owner&&gh.repo){ // raw is fresher than Pages cache
+    try{const r=await fetch(`https://raw.githubusercontent.com/${gh.owner}/${gh.repo}/main/docs/${path}${bust}`);if(r.ok)return r.json()}catch(e){}
+  }
+  const r=await fetch(path+bust);if(!r.ok)throw new Error(path);return r.json();
+}
+async function load(){
+  try{
+    [cfg,latest,history,explore]=await Promise.all([fetchJSON("watches.json"),fetchJSON("data/latest.json").catch(()=>({watches:{}})),fetchJSON("data/history.json").catch(()=>({})),fetchJSON("data/explore.json").catch(()=>null)]);
+  }catch(e){ if(window.DEMO){({cfg,latest,history,explore}=window.DEMO)} else {$("#status").innerHTML='<span class="dot warn"></span><span>לא הצלחתי לטעון את הנתונים</span>';return} }
+  render();
+}
+
+function render(){
+  const ws=cfg.watches||[];
+  const upd=latest.updated;
+  const errs=ws.filter(w=>latest.watches?.[w.id]?.status==="error").length;
+  $("#status").innerHTML=`<span class="dot ${errs?"warn":""}"></span><span>${upd?"בדיקה אחרונה "+ago(upd):"עוד לא נבדק"}${errs?` · ${errs} מעקבים נכשלו בבדיקה האחרונה`:""}</span>`;
+  // board
+  $("#board").innerHTML=ws.filter(w=>w.active!==false).map(w=>{
+    const b=latest.watches?.[w.id]?.best;const hit=b&&w.target_price&&b.price<=w.target_price;
+    const code=w.destination.split("").map(c=>`<b>${c}</b>`).join("");
+    return `<button class="row" data-jump="${w.id}"><span class="flap">${code}</span><span class="nm">${CITY[w.destination]||w.name}${b?" · "+ddw(b.dep):""}</span><span class="pr ${hit?"hit":""}">${b?nis(b.price):"—"}</span></button>`}).join("");
+  // cards
+  $("#cards").innerHTML=ws.length?ws.map(card).join(""):`<div class="note"><b>אין עדיין מעקבים</b>לחץ על "מעקב חדש" כדי להתחיל.</div>`;
+  ws.forEach(w=>drawPick(w));
+  renderExplore();
+  // notices
+  const n=[];
+  if(!gh.token) n.push(`<div class="note"><b>מצב צפייה</b>כדי להוסיף או לערוך מעקבים ישירות מהטלפון, התחבר ל־GitHub דרך ⚙︎ בראש המסך.</div>`);
+  $("#notice").innerHTML=n.join("");
+}
+
+function card(w){
+  const L=latest.watches?.[w.id]||{};const b=L.best;const dates=L.dates||[];
+  const hit=b&&w.target_price&&b.price<=w.target_price;
+  const trip=w.trip_days?`${w.trip_days} ימים הלוך־חזור`:"כיוון אחד";
+  const stops=w.max_stops===0?"ישירה":w.max_stops==1?"עד עצירה":"כל טיסה";
+  const days=(w.weekdays||[]).length?" · יציאה ב"+w.weekdays.map(x=>WD_HE[WD.indexOf(x)]).join(" "):"";
+  let chip="";
+  if(L.status==="error") chip=`<span class="chip err">הבדיקה נכשלה</span>`;
+  else if(L.status==="empty") chip=`<span class="chip err">לא נמצאו מחירים</span>`;
+  else if(b) chip=hit?`<span class="chip hit">מתחת ליעד ✓</span>`:`<span class="chip miss">עוד ${nis(b.price-w.target_price)} ליעד</span>`;
+  // bars
+  let strip="";
+  if(dates.length){
+    const prices=dates.map(x=>x.price);const max=Math.max(...prices,w.target_price||0)*1.05,min=Math.min(...prices)*0.6;
+    const h=p=>Math.max(6,Math.round((p-min)/(max-min)*100));
+    const bestP=Math.min(...prices);
+    const s=sel[w.id]??dates.findIndex(x=>x.price===bestP);sel[w.id]=s;
+    const tgt=w.target_price&&w.target_price<max?`<div class="target" style="bottom:${h(w.target_price)*0.68+18}px"><span>יעד ${nis(w.target_price)}</span></div>`:"";
+    strip=`<div class="strip"><div class="bars" role="group" aria-label="מחיר לפי תאריך יציאה">${dates.map((x,i)=>`<button style="height:${h(x.price)}%" class="${x.price===bestP?"best":w.target_price&&x.price<=w.target_price?"under":""} ${i===s?"sel":""}" data-w="${w.id}" data-i="${i}" aria-label="${ddw(x.dep)} ${nis(x.price)}"></button>`).join("")}</div>${tgt}
+      <div class="axis"><span>${dd(dates[0].dep)}</span><span>${dates.length} תאריכים</span><span>${dd(dates[dates.length-1].dep)}</span></div></div>
+      <div class="pick" id="pick-${w.id}"></div>`;
+  }
+  // trend
+  const H=(history[w.id]||[]).slice(-40);let trend="";
+  if(H.length>1){const ps=H.map(x=>x.price),mx=Math.max(...ps),mn=Math.min(...ps),rg=mx-mn||1;
+    const pts=ps.map((p,i)=>`${(i/(ps.length-1)*100).toFixed(1)},${(30-(p-mn)/rg*26+2).toFixed(1)}`).join(" ");
+    const diff=ps[ps.length-1]-ps[0];
+    trend=`<div class="trend"><span>מגמה</span><svg viewBox="0 0 100 32" preserveAspectRatio="none"><polyline points="${pts}" fill="none" stroke="#13233A" stroke-width="1.6" vector-effect="non-scaling-stroke"/></svg><span style="font-family:var(--mono);direction:ltr;color:${diff<=0?"var(--good)":"var(--bad)"}">${diff<=0?"▼":"▲"} ${nis(Math.abs(diff))}</span></div>`}
+  const det=b?.details?.out;
+  return `<article class="card ${w.active===false?"off":""}" id="c-${w.id}">
+    <div class="top"><div><div class="route">${w.origin}<i>→</i>${w.destination}</div><div class="title">${w.name}</div>
+      <div class="meta">${dd(w.from)}–${dd(w.to)} · ${trip} · ${stops}${days}</div></div>
+      <div class="price"><span class="v">${b?nis(b.price):"—"}</span><span class="t">הכי זול · יעד ${nis(w.target_price)}</span><br>${chip}</div></div>
+    ${strip}
+    ${det?`<div class="meta" style="margin-top:8px">הזולה ביותר: ${det.airline}${det.flight?` (${det.flight})`:""}, ${det.depart}→${det.arrive}${det.stops?` · ${det.stops} עצירות`:" · ישירה"}</div>`:""}
+    ${L.aviasales?`<div class="meta">Aviasales: ${nis(L.aviasales.price)} ב־${ddw(L.aviasales.dep)} · <a href="${L.aviasales.link}" target="_blank" rel="noopener">פתח</a></div>`:""}
+    ${L.status==="error"?`<div class="meta" style="color:var(--bad)">${(L.error||"").slice(0,120)}</div>`:""}
+    ${trend}
+    <div class="actions"><button class="small" data-edit="${w.id}">עריכה</button><button class="small" data-toggle="${w.id}">${w.active===false?"הפעלה":"השהיה"}</button></div>
+  </article>`;
+}
+function drawPick(w){
+  const el=document.getElementById("pick-"+w.id);if(!el)return;
+  const x=(latest.watches[w.id].dates||[])[sel[w.id]];if(!x)return;
+  el.innerHTML=`<div><div class="d">${ddw(x.dep)}${x.ret?" ← "+ddw(x.ret):""}</div><div class="s">${nis(x.price)} · <a href="${skyLink(w,x.dep,x.ret)}" target="_blank" rel="noopener">Skyscanner</a> · <a href="${kayakLink(w,x.dep,x.ret)}" target="_blank" rel="noopener">Kayak</a></div></div><a class="go" href="${gLink(w,x.dep,x.ret)}" target="_blank" rel="noopener">Google Flights</a>`;
+}
+
+document.addEventListener("click",e=>{
+  const bar=e.target.closest(".bars button");
+  if(bar){const w=cfg.watches.find(x=>x.id===bar.dataset.w);sel[w.id]=+bar.dataset.i;
+    bar.parentNode.querySelectorAll("button").forEach(b=>b.classList.toggle("sel",b===bar));drawPick(w);return}
+  const j=e.target.closest("[data-jump]");if(j){document.getElementById("c-"+j.dataset.jump)?.scrollIntoView({behavior:matchMedia("(prefers-reduced-motion:reduce)").matches?"auto":"smooth",block:"start"});return}
+  const ed=e.target.closest("[data-edit]");if(ed){openEdit(cfg.watches.find(x=>x.id===ed.dataset.edit));return}
+  const tg=e.target.closest("[data-toggle]");if(tg){const w=cfg.watches.find(x=>x.id===tg.dataset.toggle);w.active=w.active===false;commit(w.active?`הופעל: ${w.name}`:`הושהה: ${w.name}`)}
+});
+
+// ---- edit sheet
+(function(){const s=$("#fDays");for(let i=1;i<=21;i++)s.insertAdjacentHTML("beforeend",`<option value="${i}">${i} ${i===1?"יום":"ימים"} הלוך־חזור</option>`);
+  $("#fWeek").innerHTML=WD.map((d,i)=>`<label><input type="checkbox" value="${d}"><span>${WD_HE[i]}</span></label>`).join("")})();
+function openEdit(w){
+  if(!gh.token){toast("קודם צריך להתחבר ל־GitHub (⚙︎)");$("#setBtn").click();return}
+  editing=w||null;$("#editTitle").textContent=w?"עריכת מעקב":"מעקב חדש";$("#delRow").hidden=!w;
+  const t=new Date(),iso=d=>d.toISOString().slice(0,10);
+  $("#fName").value=w?.name||"";$("#fOrigin").value=w?.origin||"TLV";$("#fDest").value=w?.destination||"";
+  $("#fFrom").value=w?.from||iso(new Date(t.getTime()+7*864e5));$("#fTo").value=w?.to||iso(new Date(t.getTime()+60*864e5));
+  $("#fDays").value=String(w?.trip_days??4);$("#fStops").value=w?String(w.max_stops??"ANY"):"0";$("#fTarget").value=w?.target_price||"";
+  document.querySelectorAll("#fWeek input").forEach(c=>c.checked=(w?.weekdays||[]).includes(c.value));
+  $("#editDlg").showModal();
+}
+$("#addBtn").onclick=()=>openEdit(null);
+$("#cancelEdit").onclick=()=>$("#editDlg").close();
+$("#editForm").onsubmit=e=>{
+  e.preventDefault();
+  const from=$("#fFrom").value,to=$("#fTo").value;
+  if(to<from){toast("תאריך הסיום לפני תאריך ההתחלה");return}
+  if((new Date(to)-new Date(from))/864e5>180){toast("טווח מקסימלי: חצי שנה");return}
+  const st=$("#fStops").value;
+  const w=Object.assign(editing||{id:($("#fDest").value+"-"+Date.now().toString(36)).toLowerCase(),active:true},{
+    name:$("#fName").value.trim(),origin:$("#fOrigin").value.trim().toUpperCase(),destination:$("#fDest").value.trim().toUpperCase(),
+    from,to,trip_days:+$("#fDays").value,weekdays:[...document.querySelectorAll("#fWeek input:checked")].map(c=>c.value),
+    max_stops:st==="ANY"?"ANY":+st,target_price:+$("#fTarget").value});
+  if(!editing)cfg.watches.push(w);
+  $("#editDlg").close();commit(`${editing?"עודכן":"נוסף"}: ${w.name}`);
+};
+$("#delBtn").onclick=()=>{if(!editing||!confirm(`למחוק את "${editing.name}"?`))return;cfg.watches=cfg.watches.filter(x=>x!==editing);$("#editDlg").close();commit("נמחק מעקב")};
+
+// ---- GitHub API
+async function api(path,opt={}){
+  const r=await fetch(`https://api.github.com/repos/${gh.owner}/${gh.repo}${path}`,{...opt,headers:{Authorization:"Bearer "+gh.token,Accept:"application/vnd.github+json",...(opt.headers||{})}});
+  if(!r.ok)throw new Error(r.status+" "+(await r.text()).slice(0,120));return r.status===204?null:r.json();
+}
+async function commit(msg){
+  render();toast("שומר…");
+  try{
+    const cur=await api("/contents/docs/watches.json");
+    const body=JSON.stringify(cfg,null,2)+"\n";
+    await api("/contents/docs/watches.json",{method:"PUT",body:JSON.stringify({message:msg,sha:cur.sha,content:btoa(unescape(encodeURIComponent(body)))})});
+    toast("נשמר ✓ הבדיקה תרוץ בעוד רגע, התוצאות יופיעו תוך כ־3 דקות");
+  }catch(e){toast("השמירה נכשלה: "+e.message);load()}
+}
+$("#runBtn").onclick=async()=>{
+  if(!gh.token){toast("טוען מחדש…");load();return}
+  try{await api("/actions/workflows/check-prices.yml/dispatches",{method:"POST",body:JSON.stringify({ref:"main"})});toast("הבדיקה התחילה ✓ רענן בעוד כ־3 דקות")}
+  catch(e){toast("ההפעלה נכשלה: "+e.message)}
+};
+$("#setBtn").onclick=()=>{$("#sOwner").value=gh.owner;$("#sRepo").value=gh.repo;$("#sToken").value=gh.token;$("#setDlg").showModal()};
+$("#cancelSet").onclick=()=>$("#setDlg").close();
+$("#setForm").onsubmit=async e=>{e.preventDefault();
+  localStorage.ft_owner=$("#sOwner").value.trim();localStorage.ft_repo=$("#sRepo").value.trim();localStorage.ft_token=$("#sToken").value.trim();
+  $("#setDlg").close();
+  if(gh.token){try{await api("");toast("מחובר ✓")}catch(err){toast("החיבור נכשל: "+err.message)}}
+  load();
+};
+
+
+// ---- explore ("anywhere under X")
+let explore=null;
+const SYM={USD:"$",ILS:"₪",EUR:"€"};
+const money=(n,c)=>(SYM[c]||c+" ")+Math.round(n).toLocaleString("he-IL");
+function renderExplore(){
+  const ex=cfg.explore, el=$("#explore");
+  if(!ex){el.innerHTML="";return}
+  const E=explore||{};const cur=ex.currency||"USD";
+  const deals=E.deals||[], near=(E.all||[]).filter(r=>r.price>ex.max_price).slice(0,6);
+  const trip=ex.trip_days?`${ex.trip_days} ימים הלוך־חזור`:"כיוון אחד";
+  el.innerHTML=`<div class="ex ${ex.active===false?"off":""}">
+    <div class="hd"><div><div class="q">לכל מקום מתחת ל־<em>${money(ex.max_price,cur)}</em></div>
+      <div class="sub">${trip} · ${ex.window_days||90} ימים קדימה · ${E.scanned?E.scanned+" יעדים נסרקו "+ago(E.checked):"עוד לא נסרק"}</div></div>
+      <button class="small" id="exEdit">שינוי</button></div>
+    ${deals.length?`<div class="deals">${deals.map(r=>`<a class="deal" href="${r.link}" target="_blank" rel="noopener"><span class="flap">${r.dest.split("").map(c=>`<b>${c}</b>`).join("")}</span><span class="nm">${CITY[r.dest]||r.dest} · ${ddw(r.dep)}${r.ret?" ← "+ddw(r.ret):""}<small>${r.under} תאריכים מתחת לסף</small></span><span class="pr">${money(r.price,cur)}</span></a>`).join("")}</div>`
+      :`<div class="near" style="margin-top:12px">${E.scanned?"כרגע אין יעד מתחת לסף. תקבל התראה ברגע שיופיע.":"התוצאות יופיעו אחרי הבדיקה הראשונה."}</div>`}
+    ${near.length?`<div class="near">הכי קרוב מעל הסף: ${near.map(r=>`${CITY[r.dest]||r.dest} <b>${money(r.price,cur)}</b>`).join(" · ")}</div>`:""}
+  </div>`;
+  $("#exEdit").onclick=openExplore;
+}
+(function(){const s=$("#xDays");s.insertAdjacentHTML("beforeend",`<option value="0">כיוון אחד</option>`);for(let i=2;i<=21;i++)s.insertAdjacentHTML("beforeend",`<option value="${i}">${i} ימים</option>`);
+  $("#xWeek").innerHTML=WD.map((d,i)=>`<label><input type="checkbox" value="${d}"><span>${WD_HE[i]}</span></label>`).join("")})();
+function openExplore(){
+  if(!gh.token){toast("קודם צריך להתחבר ל־GitHub (⚙︎)");$("#setBtn").click();return}
+  const ex=cfg.explore;$("#xPrice").value=ex.max_price;$("#xCur").value=ex.currency||"USD";$("#xDays").value=String(ex.trip_days??7);
+  $("#xWin").value=String(ex.window_days||90);$("#xStops").value=String(ex.max_stops??"ANY");$("#xExcl").value=(ex.exclude||[]).join(", ");$("#xOn").checked=ex.active!==false;
+  document.querySelectorAll("#xWeek input").forEach(c=>c.checked=(ex.weekdays||[]).includes(c.value));
+  $("#exDlg").showModal();
+}
+$("#cancelEx").onclick=()=>$("#exDlg").close();
+$("#exForm").onsubmit=e=>{e.preventDefault();const st=$("#xStops").value;
+  Object.assign(cfg.explore,{max_price:+$("#xPrice").value,currency:$("#xCur").value,trip_days:+$("#xDays").value,window_days:+$("#xWin").value,
+    max_stops:st==="ANY"?"ANY":+st,weekdays:[...document.querySelectorAll("#xWeek input:checked")].map(c=>c.value),
+    exclude:$("#xExcl").value.split(/[\s,]+/).map(x=>x.trim().toUpperCase()).filter(Boolean),active:$("#xOn").checked});
+  $("#exDlg").close();commit(`סריקה לכל מקום: מתחת ל־${money(cfg.explore.max_price,cfg.explore.currency)}`)};
+
+if("serviceWorker" in navigator&&location.protocol==="https:")navigator.serviceWorker.register("sw.js");
+document.addEventListener("visibilitychange",()=>{if(!document.hidden)load()});
+load();
+</script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+{
+  "currency": "ILS",
+  "drop_alert_pct": 10,
+  "explore": {
+    "active": true,
+    "origin": "TLV",
+    "max_price": 100,
+    "currency": "USD",
+    "trip_days": 7,
+    "days_from_now": 3,
+    "window_days": 90,
+    "max_stops": "ANY",
+    "weekdays": [],
+    "destinations": [],
+    "exclude": []
+  },
+  "watches": [
+    {
+      "id": "athens-weekend",
+      "name": "סופ״ש ארוך באתונה",
+      "origin": "TLV",
+      "destination": "ATH",
+      "from": "2026-10-15",
+      "to": "2026-12-17",
+      "trip_days": 3,
+      "weekdays": [
+        "thursday"
+      ],
+      "max_stops": 0,
+      "target_price": 600,
+      "active": true
+    },
+    {
+      "id": "rome-winter",
+      "name": "רומא בחורף",
+      "origin": "TLV",
+      "destination": "FCO",
+      "from": "2027-01-10",
+      "to": "2027-02-28",
+      "trip_days": 4,
+      "weekdays": [],
+      "max_stops": 0,
+      "target_price": 700,
+      "active": true
+    },
+    {
+      "id": "barcelona-december",
+      "name": "שבוע בברצלונה בדצמבר",
+      "origin": "TLV",
+      "destination": "BCN",
+      "from": "2026-12-01",
+      "to": "2026-12-31",
+      "trip_days": 7,
+      "weekdays": [],
+      "max_stops": 1,
+      "target_price": 1100,
+      "active": true
+    }
+  ]
+}

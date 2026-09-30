@@ -1,0 +1,889 @@
+{
+ "checked": "2026-09-30T16:01+00:00",
+ "currency": "USD",
+ "max_price": 100.0,
+ "trip_days": 7,
+ "from": "2026-10-03",
+ "to": "2026-12-31",
+ "origin": "TLV",
+ "scanned": 108,
+ "failed": [
+  "KIV"
+ ],
+ "deals": [
+  {
+   "dest": "LCA",
+   "price": 64,
+   "dep": "2026-10-12",
+   "ret": "2026-10-19",
+   "under": 50,
+   "link": "https://www.google.com/travel/flights?hl=he&curr=USD&q=Flights%20to%20LCA%20from%20TLV%20on%202026-10-12%20through%202026-10-19%20one%20adult%20economy"
+  },
+  {
+   "dest": "PMO",
+   "price": 91,
+   "dep": "2026-11-02",
+   "ret": "2026-11-09",
+   "under": 7,
+   "link": "https://www.google.com/travel/flights?hl=he&curr=USD&q=Flights%20to%20PMO%20from%20TLV%20on%202026-11-02%20through%202026-11-09%20one%20adult%20economy"
+  },
+  {
+   "dest": "CTA",
+   "price": 98,
+   "dep": "2026-11-12",
+   "ret": "2026-11-19",
+   "under": 7,
+   "link": "https://www.google.com/travel/flights?hl=he&curr=USD&q=Flights%20to%20CTA%20from%20TLV%20on%202026-11-12%20through%202026-11-19%20one%20adult%20economy"
+  }
+ ],
+ "all": [
+  {
+   "dest": "LCA",
+   "price": 64,
+   "dep": "2026-10-12",
+   "ret": "2026-10-19",
+   "under": 50,
+   "link": "https://www.google.com/travel/flights?hl=he&curr=USD&q=Flights%20to%20LCA%20from%20TLV%20on%202026-10-12%20through%202026-10-19%20one%20adult%20economy"
+  },
+  {
+   "dest": "PMO",
+   "price": 91,
+   "dep": "2026-11-02",
+   "ret": "2026-11-09",
+   "under": 7,
+   "link": "https://www.google.com/travel/flights?hl=he&curr=USD&q=Flights%20to%20PMO%20from%20TLV%20on%202026-11-02%20through%202026-11-09%20one%20adult%20economy"
+  },
+  {
+   "dest": "CTA",
+   "price": 98,
+   "dep": "2026-11-12",
+   "ret": "2026-11-19",
+   "under": 7,
+   "link": "https://www.google.com/travel/flights?hl=he&curr=USD&q=Flights%20to%20CTA%20from%20TLV%20on%202026-11-12%20through%202026-11-19%20one%20adult%20economy"
+  },
+  {
+   "dest": "NAP",
+   "price": 105,
+   "dep": "2026-10-22",
+   "ret": "2026-10-29",
+   "under": 0,
+   "link": "https://www.google.com/travel/flights?hl=he&curr=USD&q=Flights%20to%20NAP%20from%20TLV%20on%202026-10-22%20through%202026-10-29%20one%20adult%20economy"
+  },
+  {
+   "dest": "PFO",
+   "price": 110,
+   "dep": "2026-10-06",
+   "ret": "2026-10-13",
+   "under": 0,
+   "link": "https://www.google.com/travel/flights?hl=he&curr=USD&q=Flights%20to%20PFO%20from%20TLV%20on%202026-10-06%20through%202026-10-13%20one%20adult%20economy"
+  },
+  {
+   "dest": "ATH",
+   "price": 118,
+   "dep": "2026-10-27",
+   "ret": "2026-11-03",
+   "under": 0,
+   "link": "https://www.google.com/travel/flights?hl=he&curr=USD&q=Flights%20to%20ATH%20from%20TLV%20on%202026-10-27%20through%202026-11-03%20one%20adult%20economy"
+  },
+  {
+   "dest": "VAR",
+   "price": 121,
+   "dep": "2026-10-07",
+   "ret": "2026-10-14",
+   "under": 0,
+   "link": "https://www.google.com/travel/flights?hl=he&curr=USD&q=Flights%20to%20VAR%20from%20TLV%20on%202026-10-07%20through%202026-10-14%20one%20adult%20economy"
+  },
+  {
+   "dest": "FCO",
+   "price": 128,
+   "dep": "2026-10-21",
+   "ret": "2026-10-28",
+   "under": 0,
+   "link": "https://www.google.com/travel/flights?hl=he&curr=USD&q=Flights%20to%20FCO%20from%20TLV%20on%202026-10-21%20through%202026-10-28%20one%20adult%20economy"
+  },
+  {
+   "dest": "MXP",
+   "price": 128,
+   "dep": "2026-10-21",
+   "ret": "2026-10-28",
+   "under": 0,
+   "link": "https://www.google.com/travel/flights?hl=he&curr=USD&q=Flights%20to%20MXP%20from%20TLV%20on%202026-10-21%20through%202026-10-28%20one%20adult%20economy"
+  },
+  {
+   "dest": "VCE",
+   "price": 128,
+   "dep": "2026-10-23",
+   "ret": "2026-10-30",
+   "under": 0,
+   "link": "https://www.google.com/travel/flights?hl=he&curr=USD&q=Flights%20to%20VCE%20from%20TLV%20on%202026-10-23%20through%202026-10-30%20one%20adult%20economy"
+  },
+  {
+   "dest": "KRK",
+   "price": 128,
+   "dep": "2026-10-24",
+   "ret": "2026-10-31",
+   "under": 0,
+   "link": "https://www.google.com/travel/flights?hl=he&curr=USD&q=Flights%20to%20KRK%20from%20TLV%20on%202026-10-24%20through%202026-10-31%20one%20adult%20economy"
+  },
+  {
+   "dest": "BUD",
+   "price": 137,
+   "dep": "2026-10-17",
+   "ret": "2026-10-24",
+   "under": 0,
+   "link": "https://www.google.com/travel/flights?hl=he&curr=USD&q=Flights%20to%20BUD%20from%20TLV%20on%202026-10-17%20through%202026-10-24%20one%20adult%20economy"
+  },
+  {
+   "dest": "WAW",
+   "price": 137,
+   "dep": "2026-10-22",
+   "ret": "2026-10-29",
+   "under": 0,
+   "link": "https://www.google.com/travel/flights?hl=he&curr=USD&q=Flights%20to%20WAW%20from%20TLV%20on%202026-10-22%20through%202026-10-29%20one%20adult%20economy"
+  },
+  {
+   "dest": "OTP",
+   "price": 137,
+   "dep": "2026-11-01",
+   "ret": "2026-11-08",
+   "under": 0,
+   "link": "https://www.google.com/travel/flights?hl=he&curr=USD&q=Flights%20to%20OTP%20from%20TLV%20on%202026-11-01%20through%202026-11-08%20one%20adult%20economy"
+  },
+  {
+   "dest": "RHO",
+   "price": 149,
+   "dep": "2026-10-04",
+   "ret": "2026-10-11",
+   "under": 0,
+   "link": "https://www.google.com/travel/flights?hl=he&curr=USD&q=Flights%20to%20RHO%20from%20TLV%20on%202026-10-04%20through%202026-10-11%20one%20adult%20economy"
+  },
+  {
+   "dest": "VNO",
+   "price": 150,
+   "dep": "2026-10-29",
+   "ret": "2026-11-05",
+   "under": 0,
+   "link": "https://www.google.com/travel/flights?hl=he&curr=USD&q=Flights%20to%20VNO%20from%20TLV%20on%202026-10-29%20through%202026-11-05%20one%20adult%20economy"
+  },
+  {
+   "dest": "CLJ",
+   "price": 155,
+   "dep": "2026-12-21",
+   "ret": "2026-12-28",
+   "under": 0,
+   "link": "https://www.google.com/travel/flights?hl=he&curr=USD&q=Flights%20to%20CLJ%20from%20TLV%20on%202026-12-21%20through%202026-12-28%20one%20adult%20economy"
+  },
+  {
+   "dest": "SOF",
+   "price": 160,
+   "dep": "2026-10-28",
+   "ret": "2026-11-04",
+   "under": 0,
+   "link": "https://www.google.com/travel/flights?hl=he&curr=USD&q=Flights%20to%20SOF%20from%20TLV%20on%202026-10-28%20through%202026-11-04%20one%20adult%20economy"
+  },
+  {
+   "dest": "TBS",
+   "price": 178,
+   "dep": "2026-10-26",
+   "ret": "2026-11-02",
+   "under": 0,
+   "link": "https://www.google.com/travel/flights?hl=he&curr=USD&q=Flights%20to%20TBS%20from%20TLV%20on%202026-10-26%20through%202026-11-02%20one%20adult%20economy"
+  },
+  {
+   "dest": "SKG",
+   "price": 187,
+   "dep": "2026-10-06",
+   "ret": "2026-10-13",
+   "under": 0,
+   "link": "https://www.google.com/travel/flights?hl=he&curr=USD&q=Flights%20to%20SKG%20from%20TLV%20on%202026-10-06%20through%202026-10-13%20one%20adult%20economy"
+  },
+  {
+   "dest": "HER",
+   "price": 190,
+   "dep": "2026-10-08",
+   "ret": "2026-10-15",
+   "under": 0,
+   "link": "https://www.google.com/travel/flights?hl=he&curr=USD&q=Flights%20to%20HER%20from%20TLV%20on%202026-10-08%20through%202026-10-15%20one%20adult%20economy"
+  },
+  {
+   "dest": "TIA",
+   "price": 198,
+   "dep": "2026-12-31",
+   "ret": "2027-01-07",
+   "under": 0,
+   "link": "https://www.google.com/travel/flights?hl=he&curr=USD&q=Flights%20to%20TIA%20from%20TLV%20on%202026-12-31%20through%202027-01-07%20one%20adult%20economy"
+  },
+  {
+   "dest": "BUS",
+   "price": 198,
+   "dep": "2026-11-04",
+   "ret": "2026-11-11",
+   "under": 0,
+   "link": "https://www.google.com/travel/flights?hl=he&curr=USD&q=Flights%20to%20BUS%20from%20TLV%20on%202026-11-04%20through%202026-11-11%20one%20adult%20economy"
+  },
+  {
+   "dest": "LYS",
+   "price": 211,
+   "dep": "2026-12-24",
+   "ret": "2026-12-31",
+   "under": 0,
+   "link": "https://www.google.com/travel/flights?hl=he&curr=USD&q=Flights%20to%20LYS%20from%20TLV%20on%202026-12-24%20through%202026-12-31%20one%20adult%20economy"
+  },
+  {
+   "dest": "EVN",
+   "price": 211,
+   "dep": "2026-11-14",
+   "ret": "2026-11-21",
+   "under": 0,
+   "link": "https://www.google.com/travel/flights?hl=he&curr=USD&q=Flights%20to%20EVN%20from%20TLV%20on%202026-11-14%20through%202026-11-21%20one%20adult%20economy"
+  },
+  {
+   "dest": "MAD",
+   "price": 219,
+   "dep": "2026-11-12",
+   "ret": "2026-11-19",
+   "under": 0,
+   "link": "https://www.google.com/travel/flights?hl=he&curr=USD&q=Flights%20to%20MAD%20from%20TLV%20on%202026-11-12%20through%202026-11-19%20one%20adult%20economy"
+  },
+  {
+   "dest": "PRG",
+   "price": 221,
+   "dep": "2026-11-18",
+   "ret": "2026-11-25",
+   "under": 0,
+   "link": "https://www.google.com/travel/flights?hl=he&curr=USD&q=Flights%20to%20PRG%20from%20TLV%20on%202026-11-18%20through%202026-11-25%20one%20adult%20economy"
+  },
+  {
+   "dest": "GYD",
+   "price": 231,
+   "dep": "2026-11-06",
+   "ret": "2026-11-13",
+   "under": 0,
+   "link": "https://www.google.com/travel/flights?hl=he&curr=USD&q=Flights%20to%20GYD%20from%20TLV%20on%202026-11-06%20through%202026-11-13%20one%20adult%20economy"
+  },
+  {
+   "dest": "FRA",
+   "price": 238,
+   "dep": "2026-11-12",
+   "ret": "2026-11-19",
+   "under": 0,
+   "link": "https://www.google.com/travel/flights?hl=he&curr=USD&q=Flights%20to%20FRA%20from%20TLV%20on%202026-11-12%20through%202026-11-19%20one%20adult%20economy"
+  },
+  {
+   "dest": "IST",
+   "price": 238,
+   "dep": "2026-12-09",
+   "ret": "2026-12-16",
+   "under": 0,
+   "link": "https://www.google.com/travel/flights?hl=he&curr=USD&q=Flights%20to%20IST%20from%20TLV%20on%202026-12-09%20through%202026-12-16%20one%20adult%20economy"
+  },
+  {
+   "dest": "LTN",
+   "price": 239,
+   "dep": "2026-11-19",
+   "ret": "2026-11-26",
+   "under": 0,
+   "link": "https://www.google.com/travel/flights?hl=he&curr=USD&q=Flights%20to%20LTN%20from%20TLV%20on%202026-11-19%20through%202026-11-26%20one%20adult%20economy"
+  },
+  {
+   "dest": "CHQ",
+   "price": 241,
+   "dep": "2026-11-16",
+   "ret": "2026-11-23",
+   "under": 0,
+   "link": "https://www.google.com/travel/flights?hl=he&curr=USD&q=Flights%20to%20CHQ%20from%20TLV%20on%202026-11-16%20through%202026-11-23%20one%20adult%20economy"
+  },
+  {
+   "dest": "CFU",
+   "price": 243,
+   "dep": "2026-10-03",
+   "ret": "2026-10-10",
+   "under": 0,
+   "link": "https://www.google.com/travel/flights?hl=he&curr=USD&q=Flights%20to%20CFU%20from%20TLV%20on%202026-10-03%20through%202026-10-10%20one%20adult%20economy"
+  },
+  {
+   "dest": "MRS",
+   "price": 258,
+   "dep": "2026-12-21",
+   "ret": "2026-12-28",
+   "under": 0,
+   "link": "https://www.google.com/travel/flights?hl=he&curr=USD&q=Flights%20to%20MRS%20from%20TLV%20on%202026-12-21%20through%202026-12-28%20one%20adult%20economy"
+  },
+  {
+   "dest": "BER",
+   "price": 258,
+   "dep": "2026-11-17",
+   "ret": "2026-11-24",
+   "under": 0,
+   "link": "https://www.google.com/travel/flights?hl=he&curr=USD&q=Flights%20to%20BER%20from%20TLV%20on%202026-11-17%20through%202026-11-24%20one%20adult%20economy"
+  },
+  {
+   "dest": "MUC",
+   "price": 258,
+   "dep": "2026-11-27",
+   "ret": "2026-12-04",
+   "under": 0,
+   "link": "https://www.google.com/travel/flights?hl=he&curr=USD&q=Flights%20to%20MUC%20from%20TLV%20on%202026-11-27%20through%202026-12-04%20one%20adult%20economy"
+  },
+  {
+   "dest": "DXB",
+   "price": 258,
+   "dep": "2026-11-16",
+   "ret": "2026-11-23",
+   "under": 0,
+   "link": "https://www.google.com/travel/flights?hl=he&curr=USD&q=Flights%20to%20DXB%20from%20TLV%20on%202026-11-16%20through%202026-11-23%20one%20adult%20economy"
+  },
+  {
+   "dest": "ORY",
+   "price": 261,
+   "dep": "2026-12-23",
+   "ret": "2026-12-30",
+   "under": 0,
+   "link": "https://www.google.com/travel/flights?hl=he&curr=USD&q=Flights%20to%20ORY%20from%20TLV%20on%202026-12-23%20through%202026-12-30%20one%20adult%20economy"
+  },
+  {
+   "dest": "CDG",
+   "price": 262,
+   "dep": "2026-11-12",
+   "ret": "2026-11-19",
+   "under": 0,
+   "link": "https://www.google.com/travel/flights?hl=he&curr=USD&q=Flights%20to%20CDG%20from%20TLV%20on%202026-11-12%20through%202026-11-19%20one%20adult%20economy"
+  },
+  {
+   "dest": "WRO",
+   "price": 264,
+   "dep": "2026-11-25",
+   "ret": "2026-12-02",
+   "under": 0,
+   "link": "https://www.google.com/travel/flights?hl=he&curr=USD&q=Flights%20to%20WRO%20from%20TLV%20on%202026-11-25%20through%202026-12-02%20one%20adult%20economy"
+  },
+  {
+   "dest": "AMS",
+   "price": 267,
+   "dep": "2026-11-25",
+   "ret": "2026-12-02",
+   "under": 0,
+   "link": "https://www.google.com/travel/flights?hl=he&curr=USD&q=Flights%20to%20AMS%20from%20TLV%20on%202026-11-25%20through%202026-12-02%20one%20adult%20economy"
+  },
+  {
+   "dest": "JMK",
+   "price": 271,
+   "dep": "2026-11-05",
+   "ret": "2026-11-12",
+   "under": 0,
+   "link": "https://www.google.com/travel/flights?hl=he&curr=USD&q=Flights%20to%20JMK%20from%20TLV%20on%202026-11-05%20through%202026-11-12%20one%20adult%20economy"
+  },
+  {
+   "dest": "VIE",
+   "price": 276,
+   "dep": "2026-10-21",
+   "ret": "2026-10-28",
+   "under": 0,
+   "link": "https://www.google.com/travel/flights?hl=he&curr=USD&q=Flights%20to%20VIE%20from%20TLV%20on%202026-10-21%20through%202026-10-28%20one%20adult%20economy"
+  },
+  {
+   "dest": "GDN",
+   "price": 277,
+   "dep": "2026-11-17",
+   "ret": "2026-11-24",
+   "under": 0,
+   "link": "https://www.google.com/travel/flights?hl=he&curr=USD&q=Flights%20to%20GDN%20from%20TLV%20on%202026-11-17%20through%202026-11-24%20one%20adult%20economy"
+  },
+  {
+   "dest": "BGY",
+   "price": 279,
+   "dep": "2026-10-03",
+   "ret": "2026-10-10",
+   "under": 0,
+   "link": "https://www.google.com/travel/flights?hl=he&curr=USD&q=Flights%20to%20BGY%20from%20TLV%20on%202026-10-03%20through%202026-10-10%20one%20adult%20economy"
+  },
+  {
+   "dest": "PMI",
+   "price": 282,
+   "dep": "2026-11-14",
+   "ret": "2026-11-21",
+   "under": 0,
+   "link": "https://www.google.com/travel/flights?hl=he&curr=USD&q=Flights%20to%20PMI%20from%20TLV%20on%202026-11-14%20through%202026-11-21%20one%20adult%20economy"
+  },
+  {
+   "dest": "JTR",
+   "price": 283,
+   "dep": "2026-11-01",
+   "ret": "2026-11-08",
+   "under": 0,
+   "link": "https://www.google.com/travel/flights?hl=he&curr=USD&q=Flights%20to%20JTR%20from%20TLV%20on%202026-11-01%20through%202026-11-08%20one%20adult%20economy"
+  },
+  {
+   "dest": "TIV",
+   "price": 285,
+   "dep": "2026-10-05",
+   "ret": "2026-10-12",
+   "under": 0,
+   "link": "https://www.google.com/travel/flights?hl=he&curr=USD&q=Flights%20to%20TIV%20from%20TLV%20on%202026-10-05%20through%202026-10-12%20one%20adult%20economy"
+  },
+  {
+   "dest": "BRU",
+   "price": 288,
+   "dep": "2026-12-22",
+   "ret": "2026-12-29",
+   "under": 0,
+   "link": "https://www.google.com/travel/flights?hl=he&curr=USD&q=Flights%20to%20BRU%20from%20TLV%20on%202026-12-22%20through%202026-12-29%20one%20adult%20economy"
+  },
+  {
+   "dest": "ARN",
+   "price": 288,
+   "dep": "2026-10-20",
+   "ret": "2026-10-27",
+   "under": 0,
+   "link": "https://www.google.com/travel/flights?hl=he&curr=USD&q=Flights%20to%20ARN%20from%20TLV%20on%202026-10-20%20through%202026-10-27%20one%20adult%20economy"
+  },
+  {
+   "dest": "BEG",
+   "price": 292,
+   "dep": "2026-12-14",
+   "ret": "2026-12-21",
+   "under": 0,
+   "link": "https://www.google.com/travel/flights?hl=he&curr=USD&q=Flights%20to%20BEG%20from%20TLV%20on%202026-12-14%20through%202026-12-21%20one%20adult%20economy"
+  },
+  {
+   "dest": "RAK",
+   "price": 292,
+   "dep": "2026-11-14",
+   "ret": "2026-11-21",
+   "under": 0,
+   "link": "https://www.google.com/travel/flights?hl=he&curr=USD&q=Flights%20to%20RAK%20from%20TLV%20on%202026-11-14%20through%202026-11-21%20one%20adult%20economy"
+  },
+  {
+   "dest": "BCN",
+   "price": 298,
+   "dep": "2026-11-10",
+   "ret": "2026-11-17",
+   "under": 0,
+   "link": "https://www.google.com/travel/flights?hl=he&curr=USD&q=Flights%20to%20BCN%20from%20TLV%20on%202026-11-10%20through%202026-11-17%20one%20adult%20economy"
+  },
+  {
+   "dest": "HAM",
+   "price": 302,
+   "dep": "2026-10-26",
+   "ret": "2026-11-02",
+   "under": 0,
+   "link": "https://www.google.com/travel/flights?hl=he&curr=USD&q=Flights%20to%20HAM%20from%20TLV%20on%202026-10-26%20through%202026-11-02%20one%20adult%20economy"
+  },
+  {
+   "dest": "ZRH",
+   "price": 303,
+   "dep": "2026-10-08",
+   "ret": "2026-10-15",
+   "under": 0,
+   "link": "https://www.google.com/travel/flights?hl=he&curr=USD&q=Flights%20to%20ZRH%20from%20TLV%20on%202026-10-08%20through%202026-10-15%20one%20adult%20economy"
+  },
+  {
+   "dest": "BRI",
+   "price": 312,
+   "dep": "2026-10-20",
+   "ret": "2026-10-27",
+   "under": 0,
+   "link": "https://www.google.com/travel/flights?hl=he&curr=USD&q=Flights%20to%20BRI%20from%20TLV%20on%202026-10-20%20through%202026-10-27%20one%20adult%20economy"
+  },
+  {
+   "dest": "DUB",
+   "price": 312,
+   "dep": "2026-11-14",
+   "ret": "2026-11-21",
+   "under": 0,
+   "link": "https://www.google.com/travel/flights?hl=he&curr=USD&q=Flights%20to%20DUB%20from%20TLV%20on%202026-11-14%20through%202026-11-21%20one%20adult%20economy"
+  },
+  {
+   "dest": "DUS",
+   "price": 314,
+   "dep": "2026-11-29",
+   "ret": "2026-12-06",
+   "under": 0,
+   "link": "https://www.google.com/travel/flights?hl=he&curr=USD&q=Flights%20to%20DUS%20from%20TLV%20on%202026-11-29%20through%202026-12-06%20one%20adult%20economy"
+  },
+  {
+   "dest": "AGP",
+   "price": 315,
+   "dep": "2026-11-21",
+   "ret": "2026-11-28",
+   "under": 0,
+   "link": "https://www.google.com/travel/flights?hl=he&curr=USD&q=Flights%20to%20AGP%20from%20TLV%20on%202026-11-21%20through%202026-11-28%20one%20adult%20economy"
+  },
+  {
+   "dest": "BLQ",
+   "price": 316,
+   "dep": "2026-10-07",
+   "ret": "2026-10-14",
+   "under": 0,
+   "link": "https://www.google.com/travel/flights?hl=he&curr=USD&q=Flights%20to%20BLQ%20from%20TLV%20on%202026-10-07%20through%202026-10-14%20one%20adult%20economy"
+  },
+  {
+   "dest": "RIX",
+   "price": 318,
+   "dep": "2026-11-11",
+   "ret": "2026-11-18",
+   "under": 0,
+   "link": "https://www.google.com/travel/flights?hl=he&curr=USD&q=Flights%20to%20RIX%20from%20TLV%20on%202026-11-11%20through%202026-11-18%20one%20adult%20economy"
+  },
+  {
+   "dest": "GVA",
+   "price": 319,
+   "dep": "2026-11-28",
+   "ret": "2026-12-05",
+   "under": 0,
+   "link": "https://www.google.com/travel/flights?hl=he&curr=USD&q=Flights%20to%20GVA%20from%20TLV%20on%202026-11-28%20through%202026-12-05%20one%20adult%20economy"
+  },
+  {
+   "dest": "FLR",
+   "price": 320,
+   "dep": "2026-10-20",
+   "ret": "2026-10-27",
+   "under": 0,
+   "link": "https://www.google.com/travel/flights?hl=he&curr=USD&q=Flights%20to%20FLR%20from%20TLV%20on%202026-10-20%20through%202026-10-27%20one%20adult%20economy"
+  },
+  {
+   "dest": "TRN",
+   "price": 321,
+   "dep": "2026-10-22",
+   "ret": "2026-10-29",
+   "under": 0,
+   "link": "https://www.google.com/travel/flights?hl=he&curr=USD&q=Flights%20to%20TRN%20from%20TLV%20on%202026-10-22%20through%202026-10-29%20one%20adult%20economy"
+  },
+  {
+   "dest": "CAI",
+   "price": 322,
+   "dep": "2026-12-07",
+   "ret": "2026-12-14",
+   "under": 0,
+   "link": "https://www.google.com/travel/flights?hl=he&curr=USD&q=Flights%20to%20CAI%20from%20TLV%20on%202026-12-07%20through%202026-12-14%20one%20adult%20economy"
+  },
+  {
+   "dest": "BSL",
+   "price": 325,
+   "dep": "2026-10-10",
+   "ret": "2026-10-17",
+   "under": 0,
+   "link": "https://www.google.com/travel/flights?hl=he&curr=USD&q=Flights%20to%20BSL%20from%20TLV%20on%202026-10-10%20through%202026-10-17%20one%20adult%20economy"
+  },
+  {
+   "dest": "VLC",
+   "price": 328,
+   "dep": "2026-11-09",
+   "ret": "2026-11-16",
+   "under": 0,
+   "link": "https://www.google.com/travel/flights?hl=he&curr=USD&q=Flights%20to%20VLC%20from%20TLV%20on%202026-11-09%20through%202026-11-16%20one%20adult%20economy"
+  },
+  {
+   "dest": "HEL",
+   "price": 331,
+   "dep": "2026-11-21",
+   "ret": "2026-11-28",
+   "under": 0,
+   "link": "https://www.google.com/travel/flights?hl=he&curr=USD&q=Flights%20to%20HEL%20from%20TLV%20on%202026-11-21%20through%202026-11-28%20one%20adult%20economy"
+  },
+  {
+   "dest": "OPO",
+   "price": 332,
+   "dep": "2026-10-27",
+   "ret": "2026-11-03",
+   "under": 0,
+   "link": "https://www.google.com/travel/flights?hl=he&curr=USD&q=Flights%20to%20OPO%20from%20TLV%20on%202026-10-27%20through%202026-11-03%20one%20adult%20economy"
+  },
+  {
+   "dest": "SPU",
+   "price": 333,
+   "dep": "2026-11-07",
+   "ret": "2026-11-14",
+   "under": 0,
+   "link": "https://www.google.com/travel/flights?hl=he&curr=USD&q=Flights%20to%20SPU%20from%20TLV%20on%202026-11-07%20through%202026-11-14%20one%20adult%20economy"
+  },
+  {
+   "dest": "TLL",
+   "price": 334,
+   "dep": "2026-10-23",
+   "ret": "2026-10-30",
+   "under": 0,
+   "link": "https://www.google.com/travel/flights?hl=he&curr=USD&q=Flights%20to%20TLL%20from%20TLV%20on%202026-10-23%20through%202026-10-30%20one%20adult%20economy"
+  },
+  {
+   "dest": "OSL",
+   "price": 336,
+   "dep": "2026-10-20",
+   "ret": "2026-10-27",
+   "under": 0,
+   "link": "https://www.google.com/travel/flights?hl=he&curr=USD&q=Flights%20to%20OSL%20from%20TLV%20on%202026-10-20%20through%202026-10-27%20one%20adult%20economy"
+  },
+  {
+   "dest": "TGD",
+   "price": 337,
+   "dep": "2026-10-20",
+   "ret": "2026-10-27",
+   "under": 0,
+   "link": "https://www.google.com/travel/flights?hl=he&curr=USD&q=Flights%20to%20TGD%20from%20TLV%20on%202026-10-20%20through%202026-10-27%20one%20adult%20economy"
+  },
+  {
+   "dest": "LIS",
+   "price": 339,
+   "dep": "2026-10-26",
+   "ret": "2026-11-02",
+   "under": 0,
+   "link": "https://www.google.com/travel/flights?hl=he&curr=USD&q=Flights%20to%20LIS%20from%20TLV%20on%202026-10-26%20through%202026-11-02%20one%20adult%20economy"
+  },
+  {
+   "dest": "DBV",
+   "price": 339,
+   "dep": "2026-10-05",
+   "ret": "2026-10-12",
+   "under": 0,
+   "link": "https://www.google.com/travel/flights?hl=he&curr=USD&q=Flights%20to%20DBV%20from%20TLV%20on%202026-10-05%20through%202026-10-12%20one%20adult%20economy"
+  },
+  {
+   "dest": "SKP",
+   "price": 339,
+   "dep": "2026-10-20",
+   "ret": "2026-10-27",
+   "under": 0,
+   "link": "https://www.google.com/travel/flights?hl=he&curr=USD&q=Flights%20to%20SKP%20from%20TLV%20on%202026-10-20%20through%202026-10-27%20one%20adult%20economy"
+  },
+  {
+   "dest": "LJU",
+   "price": 341,
+   "dep": "2026-10-21",
+   "ret": "2026-10-28",
+   "under": 0,
+   "link": "https://www.google.com/travel/flights?hl=he&curr=USD&q=Flights%20to%20LJU%20from%20TLV%20on%202026-10-21%20through%202026-10-28%20one%20adult%20economy"
+  },
+  {
+   "dest": "ZAG",
+   "price": 342,
+   "dep": "2026-10-04",
+   "ret": "2026-10-11",
+   "under": 0,
+   "link": "https://www.google.com/travel/flights?hl=he&curr=USD&q=Flights%20to%20ZAG%20from%20TLV%20on%202026-10-04%20through%202026-10-11%20one%20adult%20economy"
+  },
+  {
+   "dest": "NCE",
+   "price": 356,
+   "dep": "2026-11-05",
+   "ret": "2026-11-12",
+   "under": 0,
+   "link": "https://www.google.com/travel/flights?hl=he&curr=USD&q=Flights%20to%20NCE%20from%20TLV%20on%202026-11-05%20through%202026-11-12%20one%20adult%20economy"
+  },
+  {
+   "dest": "CPH",
+   "price": 356,
+   "dep": "2026-10-20",
+   "ret": "2026-10-27",
+   "under": 0,
+   "link": "https://www.google.com/travel/flights?hl=he&curr=USD&q=Flights%20to%20CPH%20from%20TLV%20on%202026-10-20%20through%202026-10-27%20one%20adult%20economy"
+  },
+  {
+   "dest": "NUE",
+   "price": 367,
+   "dep": "2026-10-10",
+   "ret": "2026-10-17",
+   "under": 0,
+   "link": "https://www.google.com/travel/flights?hl=he&curr=USD&q=Flights%20to%20NUE%20from%20TLV%20on%202026-10-10%20through%202026-10-17%20one%20adult%20economy"
+  },
+  {
+   "dest": "AYT",
+   "price": 397,
+   "dep": "2026-11-07",
+   "ret": "2026-11-14",
+   "under": 0,
+   "link": "https://www.google.com/travel/flights?hl=he&curr=USD&q=Flights%20to%20AYT%20from%20TLV%20on%202026-11-07%20through%202026-11-14%20one%20adult%20economy"
+  },
+  {
+   "dest": "LHR",
+   "price": 447,
+   "dep": "2026-11-14",
+   "ret": "2026-11-21",
+   "under": 0,
+   "link": "https://www.google.com/travel/flights?hl=he&curr=USD&q=Flights%20to%20LHR%20from%20TLV%20on%202026-11-14%20through%202026-11-21%20one%20adult%20economy"
+  },
+  {
+   "dest": "PSA",
+   "price": 456,
+   "dep": "2026-10-13",
+   "ret": "2026-10-20",
+   "under": 0,
+   "link": "https://www.google.com/travel/flights?hl=he&curr=USD&q=Flights%20to%20PSA%20from%20TLV%20on%202026-10-13%20through%202026-10-20%20one%20adult%20economy"
+  },
+  {
+   "dest": "CGN",
+   "price": 471,
+   "dep": "2026-10-20",
+   "ret": "2026-10-27",
+   "under": 0,
+   "link": "https://www.google.com/travel/flights?hl=he&curr=USD&q=Flights%20to%20CGN%20from%20TLV%20on%202026-10-20%20through%202026-10-27%20one%20adult%20economy"
+  },
+  {
+   "dest": "BOM",
+   "price": 474,
+   "dep": "2026-11-06",
+   "ret": "2026-11-13",
+   "under": 0,
+   "link": "https://www.google.com/travel/flights?hl=he&curr=USD&q=Flights%20to%20BOM%20from%20TLV%20on%202026-11-06%20through%202026-11-13%20one%20adult%20economy"
+  },
+  {
+   "dest": "AMM",
+   "price": 481,
+   "dep": "2026-11-23",
+   "ret": "2026-11-30",
+   "under": 0,
+   "link": "https://www.google.com/travel/flights?hl=he&curr=USD&q=Flights%20to%20AMM%20from%20TLV%20on%202026-11-23%20through%202026-11-30%20one%20adult%20economy"
+  },
+  {
+   "dest": "MAN",
+   "price": 485,
+   "dep": "2026-10-27",
+   "ret": "2026-11-03",
+   "under": 0,
+   "link": "https://www.google.com/travel/flights?hl=he&curr=USD&q=Flights%20to%20MAN%20from%20TLV%20on%202026-10-27%20through%202026-11-03%20one%20adult%20economy"
+  },
+  {
+   "dest": "BOJ",
+   "price": 505,
+   "dep": "2026-10-04",
+   "ret": "2026-10-11",
+   "under": 0,
+   "link": "https://www.google.com/travel/flights?hl=he&curr=USD&q=Flights%20to%20BOJ%20from%20TLV%20on%202026-10-04%20through%202026-10-11%20one%20adult%20economy"
+  },
+  {
+   "dest": "SSH",
+   "price": 508,
+   "dep": "2026-11-10",
+   "ret": "2026-11-17",
+   "under": 0,
+   "link": "https://www.google.com/travel/flights?hl=he&curr=USD&q=Flights%20to%20SSH%20from%20TLV%20on%202026-11-10%20through%202026-11-17%20one%20adult%20economy"
+  },
+  {
+   "dest": "DEL",
+   "price": 511,
+   "dep": "2026-11-07",
+   "ret": "2026-11-14",
+   "under": 0,
+   "link": "https://www.google.com/travel/flights?hl=he&curr=USD&q=Flights%20to%20DEL%20from%20TLV%20on%202026-11-07%20through%202026-11-14%20one%20adult%20economy"
+  },
+  {
+   "dest": "SAW",
+   "price": 525,
+   "dep": "2026-10-19",
+   "ret": "2026-10-26",
+   "under": 0,
+   "link": "https://www.google.com/travel/flights?hl=he&curr=USD&q=Flights%20to%20SAW%20from%20TLV%20on%202026-10-19%20through%202026-10-26%20one%20adult%20economy"
+  },
+  {
+   "dest": "AUH",
+   "price": 557,
+   "dep": "2026-10-11",
+   "ret": "2026-10-18",
+   "under": 0,
+   "link": "https://www.google.com/travel/flights?hl=he&curr=USD&q=Flights%20to%20AUH%20from%20TLV%20on%202026-10-11%20through%202026-10-18%20one%20adult%20economy"
+  },
+  {
+   "dest": "BKK",
+   "price": 614,
+   "dep": "2026-10-19",
+   "ret": "2026-10-26",
+   "under": 0,
+   "link": "https://www.google.com/travel/flights?hl=he&curr=USD&q=Flights%20to%20BKK%20from%20TLV%20on%202026-10-19%20through%202026-10-26%20one%20adult%20economy"
+  },
+  {
+   "dest": "MLE",
+   "price": 615,
+   "dep": "2026-11-26",
+   "ret": "2026-12-03",
+   "under": 0,
+   "link": "https://www.google.com/travel/flights?hl=he&curr=USD&q=Flights%20to%20MLE%20from%20TLV%20on%202026-11-26%20through%202026-12-03%20one%20adult%20economy"
+  },
+  {
+   "dest": "ADD",
+   "price": 636,
+   "dep": "2026-10-08",
+   "ret": "2026-10-15",
+   "under": 0,
+   "link": "https://www.google.com/travel/flights?hl=he&curr=USD&q=Flights%20to%20ADD%20from%20TLV%20on%202026-10-08%20through%202026-10-15%20one%20adult%20economy"
+  },
+  {
+   "dest": "JFK",
+   "price": 674,
+   "dep": "2026-11-03",
+   "ret": "2026-11-10",
+   "under": 0,
+   "link": "https://www.google.com/travel/flights?hl=he&curr=USD&q=Flights%20to%20JFK%20from%20TLV%20on%202026-11-03%20through%202026-11-10%20one%20adult%20economy"
+  },
+  {
+   "dest": "HRG",
+   "price": 692,
+   "dep": "2026-10-07",
+   "ret": "2026-10-14",
+   "under": 0,
+   "link": "https://www.google.com/travel/flights?hl=he&curr=USD&q=Flights%20to%20HRG%20from%20TLV%20on%202026-10-07%20through%202026-10-14%20one%20adult%20economy"
+  },
+  {
+   "dest": "NBO",
+   "price": 706,
+   "dep": "2026-11-23",
+   "ret": "2026-11-30",
+   "under": 0,
+   "link": "https://www.google.com/travel/flights?hl=he&curr=USD&q=Flights%20to%20NBO%20from%20TLV%20on%202026-11-23%20through%202026-11-30%20one%20adult%20economy"
+  },
+  {
+   "dest": "EWR",
+   "price": 753,
+   "dep": "2026-11-06",
+   "ret": "2026-11-13",
+   "under": 0,
+   "link": "https://www.google.com/travel/flights?hl=he&curr=USD&q=Flights%20to%20EWR%20from%20TLV%20on%202026-11-06%20through%202026-11-13%20one%20adult%20economy"
+  },
+  {
+   "dest": "YYZ",
+   "price": 816,
+   "dep": "2026-11-07",
+   "ret": "2026-11-14",
+   "under": 0,
+   "link": "https://www.google.com/travel/flights?hl=he&curr=USD&q=Flights%20to%20YYZ%20from%20TLV%20on%202026-11-07%20through%202026-11-14%20one%20adult%20economy"
+  },
+  {
+   "dest": "STN",
+   "price": 817,
+   "dep": "2026-10-21",
+   "ret": "2026-10-28",
+   "under": 0,
+   "link": "https://www.google.com/travel/flights?hl=he&curr=USD&q=Flights%20to%20STN%20from%20TLV%20on%202026-10-21%20through%202026-10-28%20one%20adult%20economy"
+  },
+  {
+   "dest": "HKT",
+   "price": 825,
+   "dep": "2026-10-06",
+   "ret": "2026-10-13",
+   "under": 0,
+   "link": "https://www.google.com/travel/flights?hl=he&curr=USD&q=Flights%20to%20HKT%20from%20TLV%20on%202026-10-06%20through%202026-10-13%20one%20adult%20economy"
+  },
+  {
+   "dest": "MIA",
+   "price": 828,
+   "dep": "2026-12-21",
+   "ret": "2026-12-28",
+   "under": 0,
+   "link": "https://www.google.com/travel/flights?hl=he&curr=USD&q=Flights%20to%20MIA%20from%20TLV%20on%202026-12-21%20through%202026-12-28%20one%20adult%20economy"
+  },
+  {
+   "dest": "LAX",
+   "price": 888,
+   "dep": "2026-10-20",
+   "ret": "2026-10-27",
+   "under": 0,
+   "link": "https://www.google.com/travel/flights?hl=he&curr=USD&q=Flights%20to%20LAX%20from%20TLV%20on%202026-10-20%20through%202026-10-27%20one%20adult%20economy"
+  },
+  {
+   "dest": "GOI",
+   "price": 895,
+   "dep": "2026-10-26",
+   "ret": "2026-11-02",
+   "under": 0,
+   "link": "https://www.google.com/travel/flights?hl=he&curr=USD&q=Flights%20to%20GOI%20from%20TLV%20on%202026-10-26%20through%202026-11-02%20one%20adult%20economy"
+  }
+ ]
+}
